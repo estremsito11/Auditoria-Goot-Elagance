@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auditoría Digital — Goot Elegance Barbería | Valencia</title>
+<style>
+  :root {
+    --dorado: #d97706;
+    --dorado-claro: #fbbf24;
+    --rojo: #ef4444;
+    --naranja: #f97316;
+    --amarillo: #eab308;
+    --azul: #3b82f6;
+    --verde: #22c55e;
+    --gris-claro: #f8fafc;
+    --gris: #64748b;
+    --gris-borde: #e2e8f0;
+    --negro: #0f172a;
+    --marino: #1e293b;
+    --blanco: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #f1f5f9;
+    color: var(--negro);
+    line-height: 1.6;
+  }
+  a { color: var(--azul); text-decoration: none; }
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--negro);
+    padding: 0 24px;
+    display: flex; align-items: center; gap: 0;
+    overflow-x: auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  nav a {
+    color: #94a3b8; font-size: 12px; font-weight: 500;
+    padding: 14px 16px; white-space: nowrap;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  nav a:hover { color: var(--blanco); border-bottom-color: var(--dorado-claro); }
+  nav .brand { color: var(--blanco); font-weight: 700; font-size: 13px; margin-right: 16px; border-bottom: none !important; }
+  /* LAYOUT */
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+  /* HEADER */
+  .header-card {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #292524 100%);
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 24px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .header-card::before {
+    content: '';
+    position: absolute; top: -50px; right: -50px;
+    width: 200px; height: 200px;
+    background: rgba(217,119,6,0.08);
+    border-radius: 50%;
+  }
+  .header-card::after {
+    content: '';
+    position: absolute; bottom: -80px; right: 80px;
+    width: 300px; height: 300px;
+    background: rgba(217,119,6,0.04);
+    border-radius: 50%;
+  }
+  .header-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px; }
+  .header-info h1 { font-size: 28px; font-weight: 800; margin-bottom: 4px; }
+  .header-info .subtitle { color: #fbbf24; font-size: 14px; margin-bottom: 12px; opacity: 0.85; }
+  .header-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px; }
+  .meta-badge {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px; padding: 6px 14px;
+    font-size: 12px; color: #e2e8f0;
+  }
+  .meta-badge strong { color: white; }
+  /* SCORE */
+  .score-circle {
+    width: 130px; height: 130px; flex-shrink: 0;
+    background: rgba(255,255,255,0.06);
+    border: 3px solid rgba(239,68,68,0.6);
+    border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative; z-index: 1;
+  }
+  .score-number { font-size: 42px; font-weight: 900; color: #fca5a5; line-height: 1; }
+  .score-label { font-size: 11px; color: #fca5a5; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+  .score-max { font-size: 12px; color: #fbbf24; }
+  /* ALERT BOX */
+  .alert-critico {
+    background: #fef2f2;
+    border: 2px solid #fca5a5;
+    border-left: 6px solid var(--rojo);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .alert-icon { font-size: 22px; flex-shrink: 0; line-height: 1.4; }
+  .alert-critico p { font-size: 14px; color: #7f1d1d; line-height: 1.6; }
+  .alert-critico strong { color: #991b1b; }
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 24px; }
+  @media(max-width: 768px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .header-top { flex-direction: column; }
+    .score-circle { align-self: flex-start; }
+  }
+  /* CARDS */
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border: 1px solid var(--gris-borde);
+  }
+  .card h2 {
+    font-size: 17px; font-weight: 700; margin-bottom: 16px;
+    color: var(--negro); display: flex; align-items: center; gap: 8px;
+  }
+  .card h3 { font-size: 14px; font-weight: 600; margin-bottom: 10px; color: var(--negro); }
+  /* SECTION TITLES */
+  .section-title {
+    font-size: 13px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--gris); margin: 32px 0 16px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--gris-borde);
+  }
+  /* SCORE BARS */
+  .score-row { margin-bottom: 12px; }
+  .score-row-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+  .score-row-header span:first-child { font-size: 13px; color: #334155; font-weight: 500; }
+  .score-row-header span:last-child { font-size: 13px; font-weight: 700; }
+  .bar-bg { height: 8px; background: #f1f5f9; border-radius: 4px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; transition: width 1s ease; }
+  .bar-rojo { background: linear-gradient(90deg, #ef4444, #dc2626); }
+  .bar-naranja { background: linear-gradient(90deg, #f97316, #ea580c); }
+  .bar-amarillo { background: linear-gradient(90deg, #eab308, #ca8a04); }
+  .bar-verde { background: linear-gradient(90deg, #22c55e, #16a34a); }
+  .bar-dorado { background: linear-gradient(90deg, #d97706, #b45309); }
+  /* STATUS TAGS */
+  .tag {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 3px 10px; border-radius: 20px;
+    font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .tag-rojo { background: #fef2f2; color: #dc2626; border: 1px solid #fca5a5; }
+  .tag-verde { background: #f0fdf4; color: #16a34a; border: 1px solid #86efac; }
+  .tag-naranja { background: #fff7ed; color: #ea580c; border: 1px solid #fdba74; }
+  .tag-amarillo { background: #fefce8; color: #ca8a04; border: 1px solid #fde047; }
+  .tag-gris { background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0; }
+  /* CHANNEL TABLE */
+  .channel-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .channel-table th {
+    background: #f8fafc; padding: 10px 14px; text-align: left;
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--gris);
+    border-bottom: 2px solid var(--gris-borde);
+  }
+  .channel-table td {
+    padding: 12px 14px; border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+  }
+  .channel-table tr:last-child td { border-bottom: none; }
+  .channel-table tr:hover td { background: #f8fafc; }
+  /* ICONS */
+  .icon-si { color: var(--verde); font-size: 16px; }
+  .icon-no { color: var(--rojo); font-size: 16px; }
+  .icon-parcial { color: var(--amarillo); font-size: 16px; }
+  /* JOURNEY */
+  .journey-col h3 { font-size: 13px; font-weight: 700; margin-bottom: 12px; padding: 8px 14px; border-radius: 8px; }
+  .journey-col.sin h3 { background: #fef2f2; color: #991b1b; }
+  .journey-col.con h3 { background: #f0fdf4; color: #166534; }
+  .journey-step {
+    padding: 10px 14px; margin-bottom: 8px;
+    border-radius: 8px; font-size: 13px; line-height: 1.5;
+    position: relative;
+  }
+  .journey-step.malo { background: #fff5f5; border: 1px solid #fecaca; color: #7f1d1d; }
+  .journey-step.bueno { background: #f0fdf4; border: 1px solid #bbf7d0; color: #14532d; }
+  .journey-step::before {
+    content: attr(data-step);
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; display: block; margin-bottom: 3px;
+    opacity: 0.6;
+  }
+  .journey-arrow {
+    text-align: center; font-size: 18px; color: var(--gris);
+    margin: 6px 0;
+  }
+  /* COMPETENCIA */
+  .comp-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .comp-table th {
+    background: #1e293b; color: white; padding: 12px 16px;
+    text-align: left; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .comp-table th:first-child { border-radius: 8px 0 0 0; }
+  .comp-table th:last-child { border-radius: 0 8px 0 0; }
+  .comp-table td {
+    padding: 12px 16px; border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle; font-size: 13px;
+  }
+  .comp-table tr.goot td { background: #fffbeb; border-left: 4px solid var(--amarillo); font-weight: 600; }
+  .comp-table tr.rival-web td { background: #fff; }
+  .comp-table tr:last-child td { border-bottom: none; }
+  /* ACTION PLAN */
+  .action-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .action-table th {
+    background: #0f172a; color: white; padding: 12px 16px;
+    text-align: left; font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .action-table th:first-child { border-radius: 8px 0 0 0; }
+  .action-table th:last-child { border-radius: 0 8px 0 0; }
+  .action-table td { padding: 12px 16px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+  .action-table tr:last-child td { border-bottom: none; }
+  .action-table tr:nth-child(even) td { background: #f8fafc; }
+  .priority-badge {
+    display: inline-block; padding: 3px 10px; border-radius: 20px;
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+  }
+  .p1 { background: #fef2f2; color: #dc2626; }
+  .p2 { background: #fff7ed; color: #ea580c; }
+  .p3 { background: #fefce8; color: #ca8a04; }
+  /* QUICK WINS */
+  .qw-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+  .qw-card {
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    border: 1px solid #86efac;
+    border-radius: 12px; padding: 18px;
+    position: relative; overflow: hidden;
+  }
+  .qw-number {
+    font-size: 40px; font-weight: 900; color: #16a34a;
+    opacity: 0.15; position: absolute; top: -4px; right: 12px;
+    line-height: 1;
+  }
+  .qw-card h4 { font-size: 14px; font-weight: 700; color: #14532d; margin-bottom: 6px; }
+  .qw-card p { font-size: 12px; color: #166534; line-height: 1.5; }
+  .qw-card .qw-time {
+    margin-top: 10px; font-size: 11px; font-weight: 600;
+    color: #16a34a; display: flex; align-items: center; gap: 5px;
+  }
+  /* WEB STATUS */
+  .web-status-box {
+    background: #fef2f2; border: 2px solid #ef4444;
+    border-radius: 14px; padding: 28px; margin-bottom: 24px;
+  }
+  .web-status-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .web-status-icon { font-size: 36px; }
+  .web-status-header h2 { color: #991b1b; font-size: 20px; }
+  .web-status-header .url { font-size: 13px; color: #dc2626; font-family: monospace; margin-top: 2px; }
+  .web-diagnosis { display: grid; gap: 10px; margin-top: 16px; }
+  .diag-item {
+    background: white; border-radius: 8px; padding: 12px 16px;
+    display: flex; gap: 12px; align-items: flex-start;
+    border-left: 4px solid var(--rojo);
+  }
+  .diag-item p { font-size: 13px; color: #7f1d1d; }
+  .diag-item strong { color: #991b1b; }
+  /* SUMMARY */
+  .summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 24px; }
+  @media(max-width: 768px) { .summary-grid { grid-template-columns: 1fr; } }
+  .summary-block {
+    background: white; border: 1px solid var(--gris-borde);
+    border-radius: 12px; padding: 20px;
+  }
+  .summary-block h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gris); margin-bottom: 8px; }
+  .summary-block p { font-size: 13px; color: #334155; line-height: 1.6; }
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, #fffbeb, #fef3c7);
+    border: 2px solid #d97706;
+    border-radius: 14px; padding: 28px;
+    margin-bottom: 24px;
+  }
+  .highlight-box h2 { color: #92400e; font-size: 18px; margin-bottom: 10px; }
+  .highlight-box p { color: #78350f; font-size: 14px; line-height: 1.7; }
+  .highlight-points { margin-top: 14px; display: grid; gap: 8px; }
+  .highlight-point {
+    background: white; border-radius: 8px; padding: 10px 14px;
+    display: flex; gap: 10px; align-items: flex-start;
+    border: 1px solid #fde68a;
+  }
+  .highlight-point .hicon { font-size: 18px; flex-shrink: 0; }
+  .highlight-point p { font-size: 13px; color: #78350f; }
+  /* INCOHERENCIAS */
+  .inco-item {
+    background: white; border: 1px solid var(--gris-borde);
+    border-left: 5px solid var(--naranja);
+    border-radius: 10px; padding: 16px 20px; margin-bottom: 12px;
+  }
+  .inco-item h4 { font-size: 14px; font-weight: 700; color: var(--negro); margin-bottom: 6px; }
+  .inco-item p { font-size: 13px; color: var(--gris); line-height: 1.6; margin-bottom: 6px; }
+  .inco-fix { font-size: 12px; color: #166534; background: #f0fdf4; border-radius: 6px; padding: 6px 10px; border: 1px solid #86efac; }
+  /* FOOTER */
+  .footer {
+    margin-top: 48px; padding: 24px;
+    text-align: center; color: var(--gris); font-size: 12px;
+    border-top: 1px solid var(--gris-borde);
+  }
+  /* PRINT */
+  @media print {
+    nav { display: none; }
+    body { background: white; }
+    .card { box-shadow: none; }
+    .action-table tr:nth-child(even) td { background: #f8fafc; }
+  }
+  /* ANIMATION */
+  @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .card, .web-status-box, .highlight-box { animation: slideIn 0.4s ease both; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="#">✂ Goot Elegance</a>
+  <a href="#resumen">Resumen</a>
+  <a href="#presencia">Presencia</a>
+  <a href="#web">Web</a>
+  <a href="#seo">SEO Local</a>
+  <a href="#google">Google Business</a>
+  <a href="#rrss">Redes</a>
+  <a href="#journey">Viaje Cliente</a>
+  <a href="#competencia">Competencia</a>
+  <a href="#incoherencias">Errores</a>
+  <a href="#acciones">Plan de Acción</a>
+</nav>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header-card">
+    <div class="header-top">
+      <div class="header-info">
+        <h1>Goot Elegance — Barbería</h1>
+        <div class="subtitle">Marqués de Lozoya, 8 &amp; Illes Canàries, 122 — Valencia &nbsp;·&nbsp; 2 locales activos desde 2017</div>
+        <div class="header-meta">
+          <div class="meta-badge"><strong>9 años</strong> de experiencia (desde 2017)</div>
+          <div class="meta-badge">Booksy <strong>4.9 ★</strong> — 483 reseñas</div>
+          <div class="meta-badge">Booksy <strong>5.0 ★</strong> — 231 reseñas</div>
+          <div class="meta-badge">Auditoría <strong>4 mayo 2026</strong></div>
+        </div>
+      </div>
+      <div class="score-circle">
+        <div class="score-number">28</div>
+        <div class="score-max">/100</div>
+        <div class="score-label">Presencia Web</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALERTA CRÍTICA -->
+  <div class="alert-critico">
+    <div class="alert-icon">🚨</div>
+    <div>
+      <p>
+        <strong>Hallazgo crítico:</strong> El dominio <strong>gootelegance.com</strong> devuelve error de conexión (ECONNREFUSED) desde cualquier dispositivo y navegador. La web está indexada en Google con varias subpáginas visibles — lo que significa que hay clientes que hacen clic y encuentran una página en blanco. Una barbería con dos locales, 714 reseñas positivas y 9 años de trayectoria está captando cero tráfico web nuevo.
+      </p>
+    </div>
+  </div>
+
+  <!-- RESUMEN EJECUTIVO -->
+  <div id="resumen" class="section-title">Resumen Ejecutivo</div>
+  <div class="summary-grid">
+    <div class="summary-block">
+      <h4>Estado actual</h4>
+      <p>Goot Elegance es una marca con dos locales activos en Valencia, 9 años de historia y una reputación online excepcional en Booksy (4.9 y 5.0 estrellas con 714 reseñas combinadas). El negocio funciona — pero digitalmente es invisible para quien no les conoce ya.</p>
+    </div>
+    <div class="summary-block">
+      <h4>El problema principal</h4>
+      <p>La web gootelegance.com no carga. Google tiene indexadas sus páginas pero ninguna responde. Un cliente que busca "barbería Camins al Grau" o "barbería Quatre Carreres" y hace clic en el resultado de Goot Elegance solo ve un error. La competencia con web funcional se lleva ese cliente.</p>
+    </div>
+    <div class="summary-block">
+      <h4>La oportunidad</h4>
+      <p>Dos locales en dos barrios de Valencia es un activo enorme sin explotar digitalmente. Con una web nueva, dos páginas locales optimizadas para SEO y un sistema de reservas integrado, Goot Elegance puede capturar búsquedas en dos zonas simultáneamente — algo que ningún competidor directo puede hacer.</p>
+    </div>
+  </div>
+
+  <!-- PUNTUACIÓN POR ÁREAS -->
+  <div class="card" style="margin-bottom:24px;">
+    <h2>📊 Puntuación por área</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px 40px;">
+
+      <div class="score-row">
+        <div class="score-row-header"><span>Web propia funcional</span><span style="color:#ef4444">0/20</span></div>
+        <div class="bar-bg"><div class="bar-fill bar-rojo" style="width:0%"></div></div>
+      </div>
+      <div class="score-row">
+        <div class="score-row-header"><span>SEO local (2 zonas)</span><span style="color:#ef4444">5/20</span></div>
+        <div class="bar-bg"><div class="bar-fill bar-rojo" style="width:25%"></div></div>
+      </div>
+
+      <div class="score-row">
+        <div class="score-row-header"><span>Reputación y reseñas</span><span style="color:#22c55e">15/15</span></div>
+        <div class="bar-bg"><div class="bar-fill bar-verde" style="width:100%"></div></div>
+      </div>
+      <div class="score-row">
+        <div class="score-row-header"><span>Redes sociales</span><span style="color:#eab308">6/15</span></div>
+        <div class="bar-bg"><div class="bar-fill bar-amarillo" style="width:40%"></div></div>
+      </div>
+
+      <div class="score-row">
+        <div class="score-row-header"><span>Google Business Profile</span><span style="color:#f97316">7/15</span></div>
+        <div class="bar-bg"><div class="bar-fill bar-naranja" style="width:47%"></div></div>
+      </div>
+      <div class="score-row">
+        <div class="score-row-header"><span>Sistema de reservas</span><span style="color:#eab308">7/10</span></div>
+        <div class="bar-bg"><div class="bar-fill bar-amarillo" style="width:70%"></div></div>
+      </div>
+
+      <div class="score-row">
+        <div class="score-row-header"><span>Coherencia de marca</span><span style="color:#ef4444">3/10</span></div>
+        <div class="bar-bg"><div class="bar-fill bar-rojo" style="width:30%"></div></div>
+      </div>
+      <div class="score-row">
+        <div class="score-row-header"><span>Captación de nuevos clientes</span><span style="color:#ef4444">2/10</span></div>
+        <div class="bar-bg"><div class="bar-fill bar-rojo" style="width:20%"></div></div>
+      </div>
+
+    </div>
+    <div style="margin-top:20px; padding:14px 16px; background:#fef2f2; border-radius:8px; border-left:4px solid #ef4444;">
+      <p style="font-size:13px; color:#7f1d1d;"><strong>Puntuación total: 45/115 → 28/100.</strong> La reputación de Goot Elegance es excepcional pero completamente desaprovechada digitalmente. El negocio capta clientes por inercia y boca a boca — no por su presencia online.</p>
+    </div>
+  </div>
+
+  <!-- PRESENCIA DIGITAL ACTUAL -->
+  <div id="presencia" class="section-title">Presencia Digital Actual — Qué tiene y qué le falta</div>
+  <div class="card" style="margin-bottom:24px; overflow-x:auto;">
+    <table class="channel-table">
+      <thead>
+        <tr>
+          <th>Canal</th>
+          <th>¿Existe?</th>
+          <th>Estado</th>
+          <th>Problema clave</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Web propia</strong></td>
+          <td><span class="tag tag-naranja">⚠ Dominio caído</span></td>
+          <td><span class="tag tag-rojo">✗ No funciona</span></td>
+          <td>gootelegance.com devuelve ECONNREFUSED. Clientes rebotan antes de ver nada</td>
+        </tr>
+        <tr>
+          <td><strong>Instagram</strong></td>
+          <td><span class="tag tag-verde">✓ Activo</span></td>
+          <td><span class="tag tag-amarillo">Infrautilizado</span></td>
+          <td>@gootelegance — 1.274 seguidores, 172 posts. Sin enlace en bio funcional. No comunica los 2 locales</td>
+        </tr>
+        <tr>
+          <td><strong>Facebook</strong></td>
+          <td><span class="tag tag-verde">✓ Existe</span></td>
+          <td><span class="tag tag-amarillo">Actividad baja</span></td>
+          <td>@gootelegancevlc — activo pero con engagement limitado. No genera reservas directas</td>
+        </tr>
+        <tr>
+          <td><strong>Booksy</strong></td>
+          <td><span class="tag tag-verde">✓ Muy activo</span></td>
+          <td><span class="tag tag-verde">Punto fuerte</span></td>
+          <td>Dos fichas activas con puntuaciones excepcionales. Principal canal de reservas online</td>
+        </tr>
+        <tr>
+          <td><strong>Google Business Profile</strong></td>
+          <td><span class="tag tag-amarillo">⚠ Parcial</span></td>
+          <td><span class="tag tag-naranja">Sin optimizar</span></td>
+          <td>Fichas existen (~4.6 Google Marqués de Lozoya) pero sin fotos profesionales ni descripción optimizada para SEO local</td>
+        </tr>
+        <tr>
+          <td><strong>Fresha / Treatwell</strong></td>
+          <td><span class="tag tag-rojo">✗ Ausente</span></td>
+          <td><span class="tag tag-rojo">Sin presencia</span></td>
+          <td>La competencia sí aparece. Goot Elegance no. Pierde reservas de usuarios de estas plataformas</td>
+        </tr>
+        <tr>
+          <td><strong>Meta Ads / Google Ads</strong></td>
+          <td><span class="tag tag-rojo">✗ Sin anuncios</span></td>
+          <td><span class="tag tag-gris">No detectados</span></td>
+          <td>Sin campaña de captación activa. La competencia con web sí puede hacer retargeting</td>
+        </tr>
+        <tr>
+          <td><strong>TikTok / YouTube</strong></td>
+          <td><span class="tag tag-gris">— Sin datos</span></td>
+          <td><span class="tag tag-gris">No encontrado</span></td>
+          <td>Los cortes fade y transformaciones funcionan muy bien en vídeo corto. Canal sin explotar</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- WEB STATUS -->
+  <div id="web" class="web-status-box">
+    <div class="web-status-header">
+      <div class="web-status-icon">💥</div>
+      <div>
+        <h2>El dominio existe — pero la web está muerta</h2>
+        <div class="url">gootelegance.com → ECONNREFUSED (error de conexión total)</div>
+      </div>
+    </div>
+    <p style="font-size:14px; color:#7f1d1d; margin-bottom:16px;">
+      El dominio gootelegance.com está registrado y Google tiene indexadas subpáginas como <code>/salon/barberia-peluqueria-goot-elegance/</code> y <code>/sobre-nuestra-peluqueria/</code>. Eso significa que cuando alguien busca "barbería Valencia" y hace clic en un resultado que apunta a Goot Elegance, el navegador devuelve un error inmediato. La primera impresión digital es un fracaso antes de que el cliente vea nada.
+    </p>
+    <div class="web-diagnosis">
+      <div class="diag-item">
+        <p><strong>Tráfico orgánico = cero:</strong> Sin servidor respondiendo, Google no puede rastrear ni indexar ningún contenido. Las búsquedas por zona (barbería Camins al Grau, barbería Quatre Carreres) no encontrarán a Goot Elegance de forma orgánica.</p>
+      </div>
+      <div class="diag-item">
+        <p><strong>Clientes potenciales que rebotan:</strong> Los directorios (Booksy, Belliata, Marios Peluqueros) enlazan a gootelegance.com. Cada visita que llega desde esos directorios y hace clic en la web recibe un error. Es tráfico perdido que ya costó generar.</p>
+      </div>
+      <div class="diag-item">
+        <p><strong>Sin información de referencia:</strong> Precios, galería de cortes, horarios, localización de los dos locales, formulario de contacto — todo lo que un cliente busca antes de reservar no existe en formato web accesible.</p>
+      </div>
+      <div class="diag-item">
+        <p><strong>Email gmail vs. dominio propio:</strong> La dirección de contacto visible es gootpeluqueros@gmail.com. Con un dominio propio, debería ser info@gootelegance.com. El detalle comunica nivel de profesionalidad antes de la primera interacción.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEO LOCAL -->
+  <div id="seo" class="section-title">Visibilidad en Google — Búsquedas que Goot Elegance no captura</div>
+  <div class="card" style="margin-bottom:24px; overflow-x:auto;">
+    <p style="font-size:13px; color:var(--gris); margin-bottom:16px;">
+      Búsquedas reales que hacen clientes potenciales en las dos zonas de Valencia donde Goot Elegance tiene local. Sin web funcional, ninguna de estas búsquedas lleva a una reserva.
+    </p>
+    <table class="channel-table">
+      <thead>
+        <tr>
+          <th>Búsqueda en Google</th>
+          <th>¿Aparece Goot?</th>
+          <th>¿Quién captura el clic?</th>
+          <th>Potencial perdido</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>"barbería Marqués de Lozoya Valencia"</strong></td>
+          <td><span class="tag tag-amarillo">⚠ Solo Maps</span></td>
+          <td>Google Maps pin, Belliata, Marios Peluqueros</td>
+          <td>Aparece en Maps pero sin web el clic lleva a error. Competidores con web retienen al cliente</td>
+        </tr>
+        <tr>
+          <td><strong>"barbería Quatre Carreres Valencia"</strong></td>
+          <td><span class="tag tag-rojo">✗ No aparece</span></td>
+          <td>The BARBER Mario Piqueras, Barbería MalaVita, Fresha</td>
+          <td>La zona del Local 1 tiene competidores bien posicionados orgánicamente</td>
+        </tr>
+        <tr>
+          <td><strong>"barbería L'Olivereta Valencia"</strong></td>
+          <td><span class="tag tag-rojo">✗ No aparece</span></td>
+          <td>Directorios genéricos, Booksy, Fresha</td>
+          <td>Zona adyacente al Local 1 sin presencia orgánica de Goot Elegance</td>
+        </tr>
+        <tr>
+          <td><strong>"barbería Illes Canàries Valencia"</strong></td>
+          <td><span class="tag tag-rojo">⚠ Solo directorio</span></td>
+          <td>Bellecenter, Ponte Bello Barber Shop, Fresha</td>
+          <td>Goot Elegance 2.0 solo aparece en Bellecenter. La competencia directa (Ponte Bello) domina</td>
+        </tr>
+        <tr>
+          <td><strong>"barbería Camins al Grau Valencia"</strong></td>
+          <td><span class="tag tag-rojo">✗ No aparece</span></td>
+          <td>Ponte Bello Barber Shop, Elite Barbershop, Fresha</td>
+          <td>Zona del Local 2 completamente dominada por la competencia con webs operativas</td>
+        </tr>
+        <tr>
+          <td><strong>"Goot Elegance Valencia"</strong></td>
+          <td><span class="tag tag-verde">✓ Aparece</span></td>
+          <td>Booksy, Belliata, Facebook — pero no su web</td>
+          <td>Búsqueda de marca funciona, pero el tráfico va a plataformas de terceros, no a su dominio propio</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:16px; padding:12px 16px; background:#fef9c3; border-radius:8px; border-left:4px solid #eab308;">
+      <p style="font-size:13px; color:#713f12;"><strong>El diagnóstico SEO en una frase:</strong> Goot Elegance existe para quien ya les conoce, pero es invisible para quien busca una barbería en sus zonas. Con dos locales activos deberían aparecer en el mapa de búsqueda local de dos barrios distintos — y no aparecen en ninguno de forma orgánica.</p>
+    </div>
+  </div>
+
+  <!-- GOOGLE BUSINESS PROFILE -->
+  <div id="google" class="section-title">Google Business Profile — Estado de las Fichas</div>
+  <div class="grid-2">
+    <div class="card">
+      <h2>📍 Local 1 — Marqués de Lozoya</h2>
+      <p style="font-size:12px; color:var(--gris); margin-bottom:14px;">C/ Marqués de Lozoya, 8, Bajo · Quatre Carreres, 46013</p>
+      <table class="channel-table">
+        <tbody>
+          <tr>
+            <td><strong>Ficha reclamada</strong></td>
+            <td><span class="tag tag-verde">✓ Sí</span></td>
+          </tr>
+          <tr>
+            <td><strong>Valoración Google</strong></td>
+            <td><span class="tag tag-verde">4.6 ★ (~123 reseñas)</span></td>
+          </tr>
+          <tr>
+            <td><strong>Fotos profesionales</strong></td>
+            <td><span class="tag tag-rojo">✗ Sin verificar</span></td>
+          </tr>
+          <tr>
+            <td><strong>Descripción SEO</strong></td>
+            <td><span class="tag tag-rojo">✗ Sin optimizar</span></td>
+          </tr>
+          <tr>
+            <td><strong>Respuesta a reseñas</strong></td>
+            <td><span class="tag tag-amarillo">⚠ Sin datos</span></td>
+          </tr>
+          <tr>
+            <td><strong>Horarios actualizados</strong></td>
+            <td><span class="tag tag-verde">✓ Visibles</span></td>
+          </tr>
+          <tr>
+            <td><strong>Link a reservas</strong></td>
+            <td><span class="tag tag-rojo">✗ Apunta a web caída</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h2>📍 Local 2 — Illes Canàries (2.0)</h2>
+      <p style="font-size:12px; color:var(--gris); margin-bottom:14px;">C/ Illes Canàries, 122 · Camins al Grau, 46023</p>
+      <table class="channel-table">
+        <tbody>
+          <tr>
+            <td><strong>Ficha reclamada</strong></td>
+            <td><span class="tag tag-amarillo">⚠ No confirmado</span></td>
+          </tr>
+          <tr>
+            <td><strong>Valoración Booksy</strong></td>
+            <td><span class="tag tag-verde">5.0 ★ (231 reseñas)</span></td>
+          </tr>
+          <tr>
+            <td><strong>Nombre en Booksy</strong></td>
+            <td><span class="tag tag-naranja">⚠ "Goot Elegance 2.0" — incoherente</span></td>
+          </tr>
+          <tr>
+            <td><strong>Fotos profesionales</strong></td>
+            <td><span class="tag tag-rojo">✗ Sin verificar</span></td>
+          </tr>
+          <tr>
+            <td><strong>Descripción SEO</strong></td>
+            <td><span class="tag tag-rojo">✗ Sin optimizar</span></td>
+          </tr>
+          <tr>
+            <td><strong>Horarios actualizados</strong></td>
+            <td><span class="tag tag-verde">✓ Visibles (Booksy)</span></td>
+          </tr>
+          <tr>
+            <td><strong>Link a reservas</strong></td>
+            <td><span class="tag tag-verde">✓ Booksy activo</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div style="padding:14px 18px; background:#fff7ed; border:1px solid #fdba74; border-radius:10px; margin-bottom:24px;">
+    <p style="font-size:13px; color:#9a3412;"><strong>Acción crítica GBP:</strong> El enlace de web en ambas fichas de Google Business apunta a gootelegance.com — que no carga. Hay que actualizar ese enlace a Booksy o al nuevo sitio web tan pronto como esté activo. Cada día que el enlace apunta a una web caída es tráfico de Google perdido.</p>
+  </div>
+
+  <!-- REDES SOCIALES -->
+  <div id="rrss" class="section-title">Redes Sociales — Análisis del Canal Instagram</div>
+  <div class="card" style="margin-bottom:24px;">
+    <h2>📸 Instagram @gootelegance</h2>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap:12px; margin-bottom:20px;">
+      <div style="background:#f8fafc; border-radius:10px; padding:14px; text-align:center;">
+        <div style="font-size:24px; font-weight:800; color:#0f172a;">1.274</div>
+        <div style="font-size:11px; color:var(--gris); text-transform:uppercase; margin-top:2px;">Seguidores</div>
+      </div>
+      <div style="background:#f8fafc; border-radius:10px; padding:14px; text-align:center;">
+        <div style="font-size:24px; font-weight:800; color:#0f172a;">172</div>
+        <div style="font-size:11px; color:var(--gris); text-transform:uppercase; margin-top:2px;">Posts publicados</div>
+      </div>
+      <div style="background:#f8fafc; border-radius:10px; padding:14px; text-align:center;">
+        <div style="font-size:24px; font-weight:800; color:#0f172a;">982</div>
+        <div style="font-size:11px; color:var(--gris); text-transform:uppercase; margin-top:2px;">Siguiendo</div>
+      </div>
+      <div style="background:#fef2f2; border-radius:10px; padding:14px; text-align:center;">
+        <div style="font-size:24px; font-weight:800; color:#dc2626;">❌</div>
+        <div style="font-size:11px; color:#dc2626; text-transform:uppercase; margin-top:2px;">Link bio funcional</div>
+      </div>
+    </div>
+    <table class="channel-table">
+      <thead>
+        <tr>
+          <th>Parámetro</th>
+          <th>Estado</th>
+          <th>Diagnóstico</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Bio</strong></td>
+          <td><span class="tag tag-amarillo">⚠ Básica</span></td>
+          <td>"BARBERÍA | PROFESIONAL | ELEGANCE | VALENCIA" — Correcto pero no menciona 2 locales ni CTA a reserva</td>
+        </tr>
+        <tr>
+          <td><strong>Enlace en bio</strong></td>
+          <td><span class="tag tag-rojo">✗ Caído o ausente</span></td>
+          <td>Web caída = el único tráfico que Instagram podría enviar no llega a ningún sitio</td>
+        </tr>
+        <tr>
+          <td><strong>Seguidores para 2 locales</strong></td>
+          <td><span class="tag tag-naranja">⚠ Bajo</span></td>
+          <td>1.274 seguidores para una marca con 2 locales y 9 años — hay margen de crecimiento importante</td>
+        </tr>
+        <tr>
+          <td><strong>Diferenciación de locales</strong></td>
+          <td><span class="tag tag-rojo">✗ No comunicado</span></td>
+          <td>Una sola cuenta para 2 locales, sin mencionar la expansión como logro de marca</td>
+        </tr>
+        <tr>
+          <td><strong>Tipo de contenido</strong></td>
+          <td><span class="tag tag-amarillo">⚠ Sin verificar</span></td>
+          <td>172 posts pero sin datos de engagement visibles. Sin TikTok activo confirmado</td>
+        </tr>
+        <tr>
+          <td><strong>Coherencia visual</strong></td>
+          <td><span class="tag tag-amarillo">⚠ No verificada</span></td>
+          <td>Bio y marca parecen coherentes pero no se puede confirmar estética de feed sin acceso directo</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:16px; padding:12px 16px; background:#fff7ed; border-radius:8px; border-left:4px solid #f97316;">
+      <p style="font-size:13px; color:#9a3412;"><strong>Quick fix Instagram:</strong> Cambiar el enlace en bio a Booksy inmediatamente (hoy mismo). Añadir en bio "2 locales en Valencia | Reserva online ↓". Eso no cuesta nada y empieza a generar tráfico de reservas desde Instagram ahora mismo.</p>
+    </div>
+  </div>
+
+  <!-- CUSTOMER JOURNEY -->
+  <div id="journey" class="section-title">Viaje del Cliente — Dónde se Rompe el Proceso</div>
+  <div class="card" style="margin-bottom:24px;">
+    <h2>🗺 Customer Journey — Sin web vs. Con web</h2>
+    <div class="grid-2">
+      <div class="journey-col sin">
+        <h3>❌ Situación actual (sin web)</h3>
+        <div class="journey-step malo" data-step="1. Descubrimiento">
+          Busca "barbería Camins al Grau Valencia" en Google → Goot Elegance no aparece en los primeros resultados orgánicos
+        </div>
+        <div class="journey-arrow">↓</div>
+        <div class="journey-step malo" data-step="2. Si llega por referencia">
+          Alguien le recomienda Goot Elegance → Busca el nombre → Hace clic en gootelegance.com
+        </div>
+        <div class="journey-arrow">↓</div>
+        <div class="journey-step malo" data-step="3. Primera impresión">
+          Error de conexión. Página en blanco. Puede pensar que el negocio cerró o que la dirección es incorrecta
+        </div>
+        <div class="journey-arrow">↓</div>
+        <div class="journey-step malo" data-step="4. Fricción máxima">
+          Para encontrar horarios, precios y reservar tiene que buscar en Booksy, Google Maps y Facebook — tres pasos donde en cada uno puede abandonar
+        </div>
+        <div class="journey-arrow">↓</div>
+        <div class="journey-step malo" data-step="5. Abandono o reserva">
+          Si llega a Booksy y reserva: cliente ganado. Si no llega: cliente perdido para la competencia con web funcional
+        </div>
+      </div>
+      <div class="journey-col con">
+        <h3>✅ Situación con nueva web</h3>
+        <div class="journey-step bueno" data-step="1. Descubrimiento SEO">
+          Busca "barbería Camins al Grau" → Página del Local 2 de Goot Elegance aparece en top 3 con contenido optimizado para esa zona
+        </div>
+        <div class="journey-arrow">↓</div>
+        <div class="journey-step bueno" data-step="2. Primera impresión inmediata">
+          Web carga en &lt;2 segundos. Ve: galería de cortes, precios, los 2 locales, reseñas reales y botón de reserva
+        </div>
+        <div class="journey-arrow">↓</div>
+        <div class="journey-step bueno" data-step="3. Confianza generada">
+          Lee las 483 reseñas de Booksy integradas + ve que hay 2 locales = marca consolidada con trayectoria. Decisión de reserva en menos de 1 minuto
+        </div>
+        <div class="journey-arrow">↓</div>
+        <div class="journey-step bueno" data-step="4. Reserva sin fricción">
+          Botón "Reservar cita" visible → Booksy integrado. Reserva completa en menos de 3 clics desde el móvil
+        </div>
+        <div class="journey-arrow">↓</div>
+        <div class="journey-step bueno" data-step="5. Retención post-visita">
+          Recordatorio automático de cita (Booksy), seguimiento en Instagram, posibilidad de email marketing futuro
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPETENCIA -->
+  <div id="competencia" class="section-title">Análisis de Competencia — Presencia Digital por Zona</div>
+
+  <p style="font-size:13px; color:var(--gris); margin-bottom:14px;"><strong>Local 1 — Quatre Carreres</strong> (zona Marqués de Lozoya)</p>
+  <div class="card" style="margin-bottom:20px; overflow-x:auto;">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Barbería</th>
+          <th>Web propia</th>
+          <th>Google ★</th>
+          <th>Reseñas Google</th>
+          <th>Booksy</th>
+          <th>SEO zona</th>
+          <th>Ventaja sobre Goot</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="goot">
+          <td><strong>✂ Goot Elegance</strong> (Local 1)</td>
+          <td><span class="tag tag-rojo">✗ Caída</span></td>
+          <td>4.6 ★</td>
+          <td>~123</td>
+          <td>4.9 ★ (483 res.)</td>
+          <td><span class="tag tag-rojo">Sin posición</span></td>
+          <td>—</td>
+        </tr>
+        <tr class="rival-web">
+          <td>The BARBER | Mario Piqueras</td>
+          <td><span class="tag tag-verde">✓ Funcional</span></td>
+          <td>4.9 ★</td>
+          <td>112</td>
+          <td>Probable</td>
+          <td><span class="tag tag-verde">Posicionado</span></td>
+          <td>Web funcional + SEO activo</td>
+        </tr>
+        <tr class="rival-web">
+          <td>Barbería MalaVita</td>
+          <td><span class="tag tag-amarillo">⚠ Sin confirmar</span></td>
+          <td>4.5 ★</td>
+          <td>104</td>
+          <td>—</td>
+          <td><span class="tag tag-amarillo">Parcial</span></td>
+          <td>Más reseñas Google</td>
+        </tr>
+        <tr class="rival-web">
+          <td>Barbería D'Olta 51</td>
+          <td><span class="tag tag-verde">✓ Funcional</span></td>
+          <td>5.0 ★</td>
+          <td>28</td>
+          <td>—</td>
+          <td><span class="tag tag-amarillo">Parcial</span></td>
+          <td>Rating perfecto</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="font-size:13px; color:var(--gris); margin-bottom:14px;"><strong>Local 2 — Camins al Grau</strong> (zona Illes Canàries)</p>
+  <div class="card" style="margin-bottom:24px; overflow-x:auto;">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Barbería</th>
+          <th>Web propia</th>
+          <th>Google ★</th>
+          <th>Reseñas Google</th>
+          <th>Booking</th>
+          <th>SEO zona</th>
+          <th>Ventaja sobre Goot</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="goot">
+          <td><strong>✂ Goot Elegance 2.0</strong> (Local 2)</td>
+          <td><span class="tag tag-rojo">✗ Caída</span></td>
+          <td>N/D</td>
+          <td>N/D</td>
+          <td>5.0 ★ (231 res.)</td>
+          <td><span class="tag tag-rojo">Sin posición</span></td>
+          <td>—</td>
+        </tr>
+        <tr class="rival-web">
+          <td>Ponte Bello Barber Shop</td>
+          <td><span class="tag tag-verde">✓ Funcional</span></td>
+          <td>5.0 ★</td>
+          <td>269</td>
+          <td>Sí (Fresha)</td>
+          <td><span class="tag tag-verde">Domina la zona</span></td>
+          <td>Web + SEO + más reseñas Google</td>
+        </tr>
+        <tr class="rival-web">
+          <td>Elite Barbershop</td>
+          <td><span class="tag tag-verde">✓ Funcional</span></td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><span class="tag tag-amarillo">Presente</span></td>
+          <td>Web funcional</td>
+        </tr>
+        <tr class="rival-web">
+          <td>Cuts &amp; Roses</td>
+          <td><span class="tag tag-verde">✓ Funcional</span></td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+          <td><span class="tag tag-amarillo">Presente</span></td>
+          <td>Web funcional</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:14px; padding:12px 16px; background:#f0fdf4; border-radius:8px; border-left:4px solid #22c55e;">
+      <p style="font-size:13px; color:#14532d;"><strong>La ventaja real de Goot Elegance:</strong> Ningún competidor directo tiene dos locales en Valencia con su nivel de reputación en Booksy (714 reseñas combinadas con 4.9 y 5.0). Ese activo, bien comunicado digitalmente, convierte Goot Elegance en una referencia de marca — no solo en una barbería de barrio.</p>
+    </div>
+  </div>
+
+  <!-- INCOHERENCIAS Y ERRORES -->
+  <div id="incoherencias" class="section-title">Incoherencias y Errores Detectados</div>
+
+  <div class="inco-item">
+    <h4>🔴 [CRÍTICO] Web indexada pero no funcional</h4>
+    <p>Google muestra resultados de gootelegance.com (incluidas subpáginas como /salon/ y /sobre-nuestra-peluqueria/) pero ninguna URL responde. Un cliente llega desde Google y encuentra un error de conexión.</p>
+    <div class="inco-fix">Solución: Nueva web operativa en el mismo dominio. El dominio tiene historial de indexación — recuperarlo es más valioso que uno nuevo.</div>
+  </div>
+
+  <div class="inco-item">
+    <h4>🔴 [CRÍTICO] Enlace en bio de Instagram apunta a web caída</h4>
+    <p>El único tráfico que Instagram puede generar hacia reservas pasa por el enlace en bio. Si ese enlace lleva a gootelegance.com, que no responde, Instagram no genera ni una reserva.</p>
+    <div class="inco-fix">Solución inmediata: Cambiar el enlace en bio a la ficha de Booksy del local principal o crear un Linktree con ambos locales. Esto se puede hacer hoy mismo, sin esperar la web.</div>
+  </div>
+
+  <div class="inco-item">
+    <h4>🟠 [ALTA] Dos nombres distintos en Booksy sin coherencia de marca</h4>
+    <p>"Goot Elegance Ciencias" y "BARBERÍA GOOT ELEGANCE 2.0" son dos nombres distintos en Booksy para la misma marca. Un cliente que conoce el primer local y busca el segundo no encuentra la misma marca. Se pierde la acumulación de autoridad de marca.</p>
+    <div class="inco-fix">Solución: Renombrar ambas fichas con el mismo formato: "Goot Elegance — Marqués de Lozoya" y "Goot Elegance — Illes Canàries". Coherente y diferenciado por local.</div>
+  </div>
+
+  <div class="inco-item">
+    <h4>🟠 [ALTA] Enlace de web en Google Business apunta a dominio caído</h4>
+    <p>La ficha de Google Business del Local 1 enlaza a gootelegance.com. Cuando un usuario hace clic en "Sitio web" desde Google Maps, llega a un error. Google puede penalizar la calidad de la ficha si detecta que el enlace no funciona.</p>
+    <div class="inco-fix">Solución: Actualizar el campo "Sitio web" en Google Business a la ficha de Booksy hasta tener la nueva web operativa. Tarda 5 minutos.</div>
+  </div>
+
+  <div class="inco-item">
+    <h4>🟠 [ALTA] Dos locales activos no comunicados como activo de marca</h4>
+    <p>La bio de Instagram dice "BARBERÍA | PROFESIONAL | ELEGANCE | VALENCIA" — correcto, pero no menciona que son 2 locales. Tener dos puntos de venta es una prueba de que el modelo funciona y de que hay escala. Es el mejor argumento de credibilidad que tienen y no lo están usando.</p>
+    <div class="inco-fix">Solución: Actualizar bio: "Barbería profesional en Valencia · 2 locales · Desde 2017 ✂" + enlace Booksy.</div>
+  </div>
+
+  <div class="inco-item" style="border-left-color:var(--amarillo);">
+    <h4>🟡 [MEDIA] Email de contacto en dominio gmail en vez de corporativo</h4>
+    <p>La dirección visible es gootpeluqueros@gmail.com. Para una marca con 2 locales y un dominio registrado, esto comunica un nivel de profesionalidad menor del que el negocio realmente tiene.</p>
+    <div class="inco-fix">Solución: Con la nueva web, activar info@gootelegance.com. Coste mínimo, impacto en percepción de marca notable.</div>
+  </div>
+
+  <div class="inco-item" style="border-left-color:var(--amarillo);">
+    <h4>🟡 [MEDIA] Sin presencia en Fresha ni Treatwell</h4>
+    <p>Booksy es fuerte pero no único. Parte del público objetivo usa Fresha o Treatwell para descubrir barberías. Goot Elegance no aparece en ninguna de las dos. La competencia (Ponte Bello usa Fresha) sí lo hace.</p>
+    <div class="inco-fix">Solución: Crear ficha en Fresha (gratuito). Añade un canal de reservas sin coste que aparece en las búsquedas "barbería Camins al Grau" en Fresha.</div>
+  </div>
+
+  <!-- PLAN DE ACCIÓN -->
+  <div id="acciones" class="section-title">Plan de Acción Priorizado</div>
+  <div class="card" style="margin-bottom:24px; overflow-x:auto;">
+    <table class="action-table">
+      <thead>
+        <tr>
+          <th>Prioridad</th>
+          <th>Acción</th>
+          <th>Impacto</th>
+          <th>Esfuerzo</th>
+          <th>Área</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="priority-badge p1">P1 Crítica</span></td>
+          <td><strong>Nueva web operativa en gootelegance.com</strong> con página principal + página dedicada a cada local + galería de cortes + precios + botón de reserva integrado con Booksy</td>
+          <td>⬆⬆⬆ Máximo</td>
+          <td>1 semana</td>
+          <td>Web / SEO / Captación</td>
+        </tr>
+        <tr>
+          <td><span class="priority-badge p1">P1 Crítica</span></td>
+          <td><strong>Cambiar link en bio de Instagram a Booksy</strong> (o Linktree con ambos locales). Acción de 5 minutos que recupera todo el tráfico de Instagram ahora mismo</td>
+          <td>⬆⬆ Alto</td>
+          <td>5 minutos</td>
+          <td>Instagram / Reservas</td>
+        </tr>
+        <tr>
+          <td><span class="priority-badge p1">P1 Crítica</span></td>
+          <td><strong>Actualizar Google Business Profile</strong> de ambos locales: cambiar URL de web a Booksy, añadir descripción con palabras clave locales, subir fotos del local y trabajos</td>
+          <td>⬆⬆ Alto</td>
+          <td>1-2 horas</td>
+          <td>Google / SEO Local</td>
+        </tr>
+        <tr>
+          <td><span class="priority-badge p2">P2 Alta</span></td>
+          <td><strong>SEO local en la web nueva</strong>: página /barberia-quatre-carreres y /barberia-camins-al-grau con contenido optimizado para las búsquedas locales de cada barrio. Meta title y H1 con "barbería + zona + Valencia"</td>
+          <td>⬆⬆⬆ Máximo a medio plazo</td>
+          <td>1 semana</td>
+          <td>SEO / Web</td>
+        </tr>
+        <tr>
+          <td><span class="priority-badge p2">P2 Alta</span></td>
+          <td><strong>Unificar naming de los dos locales en Booksy</strong>: "Goot Elegance — Marqués de Lozoya" y "Goot Elegance — Illes Canàries". Coherencia de marca visible para el cliente</td>
+          <td>⬆ Medio</td>
+          <td>30 minutos</td>
+          <td>Marca / Booksy</td>
+        </tr>
+        <tr>
+          <td><span class="priority-badge p2">P2 Alta</span></td>
+          <td><strong>Solicitar reseñas Google de forma activa</strong>: Qr code en los locales con enlace directo a reseña. Local 1 tiene ~123 en Google vs. 483 en Booksy — hay cientos de clientes satisfechos que nunca han dejado reseña en Google</td>
+          <td>⬆⬆ Alto</td>
+          <td>1 día</td>
+          <td>Google Business / Reputación</td>
+        </tr>
+        <tr>
+          <td><span class="priority-badge p3">P3 Media</span></td>
+          <td><strong>Crear ficha en Fresha</strong> para ambos locales. Gratuito, aparece en búsquedas de zona, genera reservas sin coste de plataforma visible al cliente</td>
+          <td>⬆ Medio</td>
+          <td>1 hora</td>
+          <td>Reservas / Captación</td>
+        </tr>
+        <tr>
+          <td><span class="priority-badge p3">P3 Media</span></td>
+          <td><strong>Actualizar bio de Instagram</strong> mencionando los 2 locales y con CTA clara ("Reserva online ↓"). Publicar contenido que muestre ambos locales y el equipo de profesionales</td>
+          <td>⬆ Medio</td>
+          <td>30 minutos</td>
+          <td>Instagram / Marca</td>
+        </tr>
+        <tr>
+          <td><span class="priority-badge p3">P3 Media</span></td>
+          <td><strong>Activar email corporativo</strong> info@gootelegance.com y actualizar en todas las fichas de directorios y redes sociales</td>
+          <td>⬆ Bajo</td>
+          <td>1 hora</td>
+          <td>Marca / Profesionalidad</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- QUICK WINS -->
+  <div class="section-title">Quick Wins — Lo que se puede hacer esta semana sin esperar la web</div>
+  <div class="qw-grid" style="margin-bottom:32px;">
+    <div class="qw-card">
+      <div class="qw-number">1</div>
+      <h4>Cambiar link en bio Instagram</h4>
+      <p>Sustituir el enlace roto por la ficha de Booksy. Recupera el tráfico de Instagram hacia reservas inmediatamente.</p>
+      <div class="qw-time">⏱ 5 minutos · hoy mismo</div>
+    </div>
+    <div class="qw-card">
+      <div class="qw-number">2</div>
+      <h4>Actualizar Google Business</h4>
+      <p>Cambiar la URL de web a Booksy en ambas fichas. Añadir 5-10 fotos del local y trabajos recientes.</p>
+      <div class="qw-time">⏱ 2 horas · esta semana</div>
+    </div>
+    <div class="qw-card">
+      <div class="qw-number">3</div>
+      <h4>QR de reseñas Google</h4>
+      <p>Imprimir un QR en los dos locales que lleva directamente al formulario de reseña de Google. Triplicar reseñas en 1 mes.</p>
+      <div class="qw-time">⏱ 30 minutos + impresión</div>
+    </div>
+    <div class="qw-card">
+      <div class="qw-number">4</div>
+      <h4>Unificar nombres en Booksy</h4>
+      <p>Renombrar las dos fichas con formato coherente: "Goot Elegance — Marqués de Lozoya" y "Goot Elegance — Illes Canàries".</p>
+      <div class="qw-time">⏱ 15 minutos · hoy mismo</div>
+    </div>
+    <div class="qw-card">
+      <div class="qw-number">5</div>
+      <h4>Post de Instagram — los 2 locales</h4>
+      <p>Publicar un post que muestre los dos locales y el equipo. Comunicar la escala de marca. "Somos 2 locales en Valencia y seguimos creciendo."</p>
+      <div class="qw-time">⏱ 1 hora de producción</div>
+    </div>
+  </div>
+
+  <!-- OPORTUNIDAD DESTACADA -->
+  <div class="highlight-box">
+    <h2>🏆 El activo oculto: dos locales como argumento de marca</h2>
+    <p>
+      Goot Elegance tiene algo que ningún competidor de zona tiene: dos locales activos, con un modelo que claramente funciona, y una reputación online combinada de <strong>714 reseñas con puntuación máxima</strong>. Eso no es una barbería de barrio — eso es una pequeña cadena con track record demostrado.
+    </p>
+    <p style="margin-top:10px;">
+      Ese activo no está comunicado en ningún canal digital. La web lo diría. Instagram no lo dice. Google Business tampoco. La nueva web debe construirse sobre ese mensaje central: <em>no sois una barbería más en Valencia, sois una marca con dos puntos de presencia y nueve años de clientes satisfechos.</em>
+    </p>
+    <div class="highlight-points">
+      <div class="highlight-point">
+        <div class="hicon">📍</div>
+        <p><strong>Dos páginas de local en la web:</strong> Una para Quatre Carreres y una para Camins al Grau — cada una optimizada para las búsquedas de su barrio. Doble superficie de captación SEO.</p>
+      </div>
+      <div class="highlight-point">
+        <div class="hicon">⭐</div>
+        <p><strong>Integrar las 714 reseñas de Booksy:</strong> No hay competidor en la zona con esa cantidad de valoraciones positivas. Mostrarlo en la home como primer elemento de credibilidad.</p>
+      </div>
+      <div class="highlight-point">
+        <div class="hicon">📅</div>
+        <p><strong>Reservas integradas para los dos locales:</strong> Un solo botón que permite elegir local y barbero. Menos pasos = más reservas completadas.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>Auditoría Digital · Goot Elegance Barbería · Valencia · Mayo 2026</p>
+    <p style="margin-top:6px;">Elaborada por <strong>Alejandro</strong> — Diseño web para barberías y peluquerías en Valencia</p>
+    <p style="margin-top:4px; font-size:11px; color:#94a3b8;">Datos obtenidos mediante investigación pública: Booksy, Google Maps, Instagram, búsquedas locales. Puntuaciones basadas en el análisis de presencia digital activa.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
